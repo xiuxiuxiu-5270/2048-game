@@ -13,22 +13,78 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #faf8ef 0%, #eee4da 100%);
             min-height: 100vh;
             padding: 20px;
+            background: linear-gradient(180deg, #c4a77d 0%, #c4a77d 45%, #ffffff 45%, #ffffff 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 45%;
+            background-image: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 30px,
+                rgba(255, 255, 255, 0.03) 30px,
+                rgba(255, 255, 255, 0.03) 31px
+            );
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 45%;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            line-height: 18px;
+            color: rgba(200, 200, 200, 0.04);
+            white-space: pre-wrap;
+            word-break: break-all;
+            pointer-events: none;
+            letter-spacing: 3px;
+            text-align: justify;
+            padding: 10px;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.08),
+                0 2px 10px rgba(0, 0, 0, 0.05);
             overflow: hidden;
+            border: 1px solid rgba(200, 200, 200, 0.2);
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 55%;
+            background-image: 
+                linear-gradient(rgba(200, 200, 200, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 200, 200, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
         }
 
         .header {
-            background: linear-gradient(135deg, #a69076 0%, #8f7a66 50%, #9f8b77 100%);
+            background: linear-gradient(135deg, #c4a77d 0%, #b5966b 50%, #c4a77d 100%);
             color: white;
             padding: 40px;
             text-align: center;
@@ -37,20 +93,20 @@
         }
 
         .header::before {
-            content: '01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100';
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            line-height: 1.5;
-            color: rgba(144, 238, 144, 0.12);
-            white-space: pre-wrap;
-            word-break: break-all;
+            background-image: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 25px,
+                rgba(255, 255, 255, 0.02) 25px,
+                rgba(255, 255, 255, 0.02) 26px
+            );
             pointer-events: none;
-            letter-spacing: 2px;
         }
 
         .avatar {
@@ -61,9 +117,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 4px solid rgba(255, 255, 255, 0.8);
-            background: url('https://neeko-copilot.bytedance.net/api/text2image?prompt=anime%20style%20portrait%20of%20a%20beautiful%20young%20woman%20with%20long%20black%20hair%20and%20elegant%20earrings%2C%20soft%20natural%20lighting%2C%20minimalist%20office%20background%2C%20professional%20IT%20engineer%20portrait%2C%20soft%20neutral%20color%20palette&image_size=square_hd') center/cover;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            background: url('https://i.pravatar.cc/150?img=3') center/cover;
+            position: relative;
+            z-index: 1;
         }
 
         .name {
@@ -257,7 +315,7 @@
     <div class="container">
         <!-- 头部信息 -->
         <div class="header">
-            <div class="avatar"></div>
+            <div class="avatar">👩‍💻</div>
             <div class="name">林丽敏</div>
             <div class="title">测试工程师</div>
             <div class="contact">
