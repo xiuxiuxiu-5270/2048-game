@@ -28,24 +28,42 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #8f7a66 0%, #9f8b77 100%);
+            background: linear-gradient(135deg, #a69076 0%, #8f7a66 50%, #9f8b77 100%);
             color: white;
             padding: 40px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            color: rgba(144, 238, 144, 0.12);
+            white-space: pre-wrap;
+            word-break: break-all;
+            pointer-events: none;
+            letter-spacing: 2px;
         }
 
         .avatar {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ede0c8 0%, #e4d4b8 100%);
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            color: #776e65;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            background: url('https://neeko-copilot.bytedance.net/api/text2image?prompt=anime%20style%20portrait%20of%20a%20beautiful%20young%20woman%20with%20long%20black%20hair%20and%20elegant%20earrings%2C%20soft%20natural%20lighting%2C%20minimalist%20office%20background%2C%20professional%20IT%20engineer%20portrait%2C%20soft%20neutral%20color%20palette&image_size=square_hd') center/cover;
         }
 
         .name {
@@ -239,7 +257,7 @@
     <div class="container">
         <!-- 头部信息 -->
         <div class="header">
-            <div class="avatar">👩‍💻</div>
+            <div class="avatar"></div>
             <div class="name">林丽敏</div>
             <div class="title">测试工程师</div>
             <div class="contact">
