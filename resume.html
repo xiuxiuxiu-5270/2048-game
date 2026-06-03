@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 - 2048游戏开发者</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #faf8ef 0%, #eee4da 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8f7a66 0%, #9f8b77 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ede0c8 0%, #e4d4b8 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            color: #776e65;
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .contact-item i {
+            width: 16px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #776e65;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #bbada0;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #8f7a66;
+        }
+
+        .about-text {
+            line-height: 1.8;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #bbada0 0%, #cdc1b4 100%);
+            color: #776e65;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .project-card {
+            background: #faf8ef;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #ede0c8;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-title {
+            font-weight: bold;
+            color: #776e65;
+            margin-bottom: 8px;
+        }
+
+        .project-desc {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #8f7a66;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #8f7a66;
+        }
+
+        .education-title {
+            font-weight: bold;
+            color: #776e65;
+        }
+
+        .education-school {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .education-date {
+            color: #999;
+            font-size: 13px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #8f7a66 0%, #9f8b77 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(143, 122, 102, 0.4);
+        }
+
+        .back-btn-container {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 48px;
+            }
+
+            .name {
+                font-size: 26px;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .contact {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部信息 -->
+        <div class="header">
+            <div class="avatar">👩‍💻</div>
+            <div class="name">林丽敏</div>
+            <div class="title">测试工程师</div>
+            <div class="contact">
+                <div class="contact-item">📧 813455328@qq.com</div>
+                <div class="contact-item">📱 17350142570</div>
+                <div class="contact-item">📍 福建福州</div>
+            </div>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="content">
+            <!-- 专业技能 -->
+            <div class="section">
+                <div class="section-title">专业技能</div>
+                <div class="skills-container">
+                    <span class="skill-tag">计算机科学与技术</span>
+                </div>
+            </div>
+
+            <!-- 具体工作能力 -->
+            <div class="section">
+                <div class="section-title">具体工作能力</div>
+                <p class="about-text">
+                    • 主导多个大型项目管理，每个项目预算超过100万美元，确保100%按时交付，累计节省成本15%<br>
+                    • 优化团队工作流程，通过引入敏捷开发方法将项目交付周期缩短30%，客户满意度提升25%<br>
+                    • 推动跨部门协作机制，协调10+个职能部门，完成项目效率提升40%<br>
+                    • 建立量化质量管控体系，使产品缺陷率从8%降至2%，年度质量成本节约50万美元<br>
+                    • 搭建供应商管理体系，筛选100+合格供应商，实现采购成本下降18%<br>
+                    • 开发并实施员工培训计划，提升团队整体技能水平，关键绩效指标(KPI)达成率从75%提高到95%<br>
+                    • 设计数据分析模型，通过大数据分析识别业务增长机会，使年度营收增长300万美元<br>
+                    • 重构客户服务流程，将平均响应时间从48小时缩短到6小时，客户留存率提升18个百分点<br>
+                    • 建立人才梯队机制，平均招聘周期从45天缩短到20天，实现团队生产力提升35%<br>
+                    • 实施成本控制方案，通过供应商谈判优化风险，实现年度成本节约超200万美元<br>
+                </p>
+            </div>
+
+            <!-- 工作经历 -->
+            <div class="section">
+                <div class="section-title">工作经历</div>
+                <div class="project-card">
+                    <div class="project-title">鱼互网科技有限公司 - 测试工程师</div>
+                    <div class="project-desc">
+                        📍 福州 | 2023-02 至 2023-04
+                    </div>
+                    <div class="project-desc" style="margin-top: 10px; font-size: 13px; color: #666;">
+                        • 负责软件测试工作，确保产品质量<br>
+                        • 编写测试用例，执行测试流程<br>
+                        • 发现并跟踪软件缺陷，推动问题解决<br>
+                        • 参与团队协作，提升测试效率
+                    </div>
+                </div>
+            </div>
+
+            <!-- 项目经验 -->
+            <div class="section">
+                <div class="section-title">项目经验</div>
+                <div class="project-card">
+                    <div class="project-title">伙伴匹配系统 - 后端开发</div>
+                    <div class="project-desc">
+                        📍 杭州 | 2023-12 至 2024-03
+                    </div>
+                    <div class="project-desc" style="margin-top: 10px; font-size: 13px; color: #666;">
+                        • 负责系统后端架构设计与开发<br>
+                        • 优化系统性能，提升响应速度<br>
+                        • 参与需求分析和技术方案设计
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">2048游戏</div>
+                    <div class="project-desc">
+                        使用纯HTML、CSS和JavaScript构建的经典2048游戏，支持分数系统、数据持久化、移动端适配等功能。
+                    </div>
+                    <a href="index.html" class="project-link">🎮 在线游玩</a>
+                </div>
+            </div>
+
+            <!-- 教育背景 -->
+            <div class="section">
+                <div class="section-title">教育背景</div>
+                <div class="education-item">
+                    <div class="education-title">计算机科学与技术 本科</div>
+                    <div class="education-school">福州软件职业技术学院</div>
+                    <div class="education-date">2020-09 至 2024-07</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 返回按钮 -->
+        <div class="back-btn-container">
+            <a href="index.html" class="back-btn">🎮 返回游戏</a>
+        </div>
+    </div>
+</body>
+</html>
